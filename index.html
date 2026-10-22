@@ -19,6 +19,7 @@
       <a href="#o-mne">O mně</a>
       <a href="#projekty">Projekty</a>
       <a href="#kontakt">Kontakt</a>
+      <a href="googlesearch.html">Hledat</a>
     </nav>
     <a class="header-cta" href="#kontakt">Pojďme spolupracovat <span>↗</span></a>
   </header>
@@ -125,8 +126,80 @@
   </main>
   <footer class="site-footer section-shell">
     <a class="logo" href="#domu">HK<span>.</span></a>
+    <div class="validator-tools">
+      <a class="validator-link" id="html-validator" href="https://validator.w3.org/nu/" target="_blank" rel="noopener noreferrer">Ověřit HTML <span>↗</span></a>
+      <button class="validator-link" id="css-validator" type="button" disabled>Ověřit CSS <span>↗</span></button>
+      <p class="validator-note" id="validator-note">Výsledek kontroly CSS se otevře v nové záložce.</p>
+    </div>
+    <form id="html-validator-form" action="https://validator.w3.org/nu/" method="post" enctype="multipart/form-data" target="_blank">
+      <textarea name="content" aria-label="HTML pro validaci" hidden></textarea>
+    </form>
+    <form id="css-validator-form" action="https://jigsaw.w3.org/css-validator/validator" method="post" enctype="multipart/form-data" target="_blank">
+      <input type="hidden" name="profile" value="css3">
+      <input type="hidden" name="warning" value="1">
+      <input type="hidden" name="lang" value="cs">
+      <textarea name="text" aria-label="CSS pro validaci" hidden></textarea>
+    </form>
     <p>Navrženo a vytvořeno s péčí. <span>© 2025</span></p>
     <a class="back-top" href="#domu">Zpět nahoru ↑</a>
   </footer>
+  <script>
+    const htmlValidator = document.getElementById("html-validator");
+    const htmlValidatorForm = document.getElementById("html-validator-form");
+    const htmlSourceField = htmlValidatorForm.elements.namedItem("content");
+    const cssValidator = document.getElementById("css-validator");
+    const cssValidatorForm = document.getElementById("css-validator-form");
+    const cssSourceField = cssValidatorForm.elements.namedItem("text");
+    const validatorNote = document.getElementById("validator-note");
+    const isLocalAddress = ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
+    const isLocalFile = window.location.protocol === "file:";
+    const isLocalDocument = isLocalAddress || isLocalFile;
+
+    if (window.location.protocol === "http:" || window.location.protocol === "https:") {
+      if (!isLocalAddress) {
+        const pageUrl = window.location.href;
+        htmlValidator.href = `https://validator.w3.org/nu/?doc=${encodeURIComponent(pageUrl)}`;
+      }
+    }
+
+    htmlValidator.addEventListener("click", (event) => {
+      if (!isLocalDocument) {
+        return;
+      }
+      event.preventDefault();
+      htmlSourceField.value = `<!DOCTYPE html>\n${document.documentElement.outerHTML}`;
+      htmlValidatorForm.submit();
+    });
+
+    const stylesheetUrl = new URL("style.css", window.location.href);
+    const stylesheetSource = isLocalFile
+      ? Promise.resolve().then(() => {
+          const stylesheet = [...document.styleSheets].find((sheet) => sheet.href === stylesheetUrl.href);
+          if (!stylesheet) {
+            throw new Error("Nepodařilo se najít style.css.");
+          }
+          return [...stylesheet.cssRules].map((rule) => rule.cssText).join("\n");
+        })
+      : fetch(stylesheetUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Nepodařilo se načíst style.css (HTTP ${response.status}).`);
+          }
+          return response.text();
+        });
+
+    stylesheetSource
+      .then((cssSource) => {
+        cssSourceField.value = cssSource;
+        cssValidator.disabled = false;
+      })
+      .catch((error) => {
+        validatorNote.textContent = `${error.message} Spusť web přes Live Server a zkus to znovu.`;
+      });
+
+    cssValidator.addEventListener("click", () => {
+      cssValidatorForm.submit();
+    });
+  </script>
 </body>
 </html>

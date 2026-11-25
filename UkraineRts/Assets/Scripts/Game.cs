@@ -75,7 +75,7 @@ public class Game : MonoBehaviour
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     static void Boot()
     {
-        if (FindObjectOfType<Game>() != null) return;
+        if (FindFirstObjectByType<Game>() != null) return;
         var go = new GameObject("RTS Game");
         go.AddComponent<Game>();
     }

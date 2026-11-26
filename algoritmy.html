@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="Algoritmizace pro střední školy: co je algoritmus, jeho vlastnosti, způsoby zápisu, značky vývojových diagramů a jednoduchý test.">
+  <title>Algoritmizace — Hlib Kolisnyk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="algo-page">
+  <header class="site-header">
+    <a class="logo" href="index.html" aria-label="Hlib Kolisnyk — portfolio">HK<span>.</span></a>
+    <nav class="main-nav" aria-label="Hlavní navigace">
+      <a href="index.html">Domů</a>
+      <a href="#algoritmus">Algoritmy</a>
+      <a href="#test">Test</a>
+      <a href="googlesearch.html">Hledat</a>
+    </nav>
+    <a class="header-cta" href="#test">Spustit test <span>↘</span></a>
+  </header>
+
+  <main>
+    <section class="algo-hero section-shell" id="uvod">
+      <p class="eyebrow"><span class="status-dot"></span> INFORMATIKA <span class="eyebrow-divider">/</span> ALGORITMIZACE</p>
+      <h1>Algoritmy,<br><span class="gradient-text">krok za krokem.</span></h1>
+      <p class="algo-lead">Počítač nemá vlastní inteligenci a dělá pouze to, co mu přesně přikážeme. Podívejte se, jak takový přesný postup vypadá, jak se zapisuje a jak si ověřit, že mu rozumíte.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#algoritmus">Začít číst <span>↘</span></a>
+        <a class="text-link" href="#test">Rovnou na test <span>↓</span></a>
+      </div>
+    </section>
+
+    <section class="algo-section section-shell section-block" id="algoritmus">
+      <div class="section-heading">
+        <p class="eyebrow">01 / ZÁKLADY</p>
+        <h2>Co je algoritmus<br><span class="muted-text">a proč ho tvoříme.</span></h2>
+      </div>
+      <div class="algo-text">
+        <p>Tvorba počítačového programu probíhá ve dvou hlavních fázích:</p>
+        <ol class="algo-steps">
+          <li>vymyšlení přesného postupu řešení, tedy <strong>algoritmu</strong>,</li>
+          <li>přepsání tohoto postupu do kódu v konkrétním <strong>programovacím jazyce</strong>.</li>
+        </ol>
+        <p class="algo-definition"><strong>Algoritmus</strong> je přesný postup, který je potřeba k vykonání určité činnosti.</p>
+      </div>
+    </section>
+
+    <section class="algo-section section-shell section-block" id="vlastnosti">
+      <div class="section-heading">
+        <p class="eyebrow">02 / VLASTNOSTI</p>
+        <h2>Šest podmínek<br><span class="muted-text">správného algoritmu.</span></h2>
+      </div>
+      <ul class="algo-cards">
+        <li class="algo-card">
+          <span class="algo-card-index">01</span>
+          <h3>Konečnost</h3>
+          <p>Algoritmus má začátek a konec. Po konečném počtu kroků musí dojít od počátku do konce. Bez této podmínky se program zacyklí, „zatuhne“ nebo havaruje kvůli přetečení paměti.</p>
+        </li>
+        <li class="algo-card">
+          <span class="algo-card-index">02</span>
+          <h3>Věcná správnost</h3>
+          <p>Musí používat správné vzorce a postupy. Při porušení program zdánlivě pracuje, ale dává chybné výsledky. Zlomek zapisujeme s lomítkem a závorkami: <code>X := (A+B) / (C+D)</code>, odmocninu funkcí <code>SQRT(...)</code>.</p>
+        </li>
+        <li class="algo-card">
+          <span class="algo-card-index">03</span>
+          <h3>Jednoznačnost</h3>
+          <p>V každém kroku je jasné, jaký krok bude následovat. Je nutné pokrýt všechny větve rozhodování a ošetřit podmínky řešitelnosti, například dělení nulou nebo záporný výraz pod odmocninou.</p>
+        </li>
+        <li class="algo-card">
+          <span class="algo-card-index">04</span>
+          <h3>Obecnost</h3>
+          <p>Algoritmus řeší co nejširší skupinu úloh. Sečítá jakákoli dvě čísla <code>A + B</code>, nikoli jen konkrétní <code>1 + 1</code>.</p>
+        </li>
+        <li class="algo-card">
+          <span class="algo-card-index">05</span>
+          <h3>Opakovatelnost</h3>
+          <p>Při zadání stejných vstupních dat dospěje algoritmus vždy ke stejným výsledkům (determinismus). Výsledek nesmí záviset na neinicializovaných proměnných.</p>
+        </li>
+        <li class="algo-card">
+          <span class="algo-card-index">06</span>
+          <h3>Srozumitelnost</h3>
+          <p>Zápis je čitelný pro programátory i pro autora při pozdějších úpravách. Pomáhají standardní metody zápisu, komentáře a popis významu proměnných.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="algo-section section-shell section-block" id="zapis">
+      <div class="section-heading">
+        <p class="eyebrow">03 / ZÁPIS</p>
+        <h2>Jak algoritmus<br><span class="muted-text">zapsat.</span></h2>
+      </div>
+      <div class="algo-table-wrap" role="region" aria-label="Tabulka způsobů zápisu algoritmů" tabindex="0">
+        <table class="algo-table">
+          <caption>Porovnání možností zápisu algoritmů</caption>
+          <thead>
+            <tr>
+              <th scope="col">Forma zápisu</th>
+              <th scope="col">Použití a charakteristika</th>
+              <th scope="col">Výhody</th>
+              <th scope="col">Nevýhody</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Slovní vyjádření</th>
+              <td>Návody, recepty, prvotní komunikace analytika se zákazníkem (laikem).</td>
+              <td>Srozumitelné i pro laiky bez znalosti programování.</td>
+              <td>Nejméně přehledné, těžko se hlídá jednoznačnost a přesnost.</td>
+            </tr>
+            <tr>
+              <th scope="row">Matematický zápis</th>
+              <td>Úlohy popsatelné matematickými vzorci a vztahy.</td>
+              <td>Jednoznačný pro odborníky (techniky, výzkumníky).</td>
+              <td>Málo podrobný pro počítač, neobsahuje ošetření okrajových podmínek.</td>
+            </tr>
+            <tr>
+              <th scope="row">Rozhodovací tabulky</th>
+              <td>Situace s více kombinacemi vstupů a jednoduchým řešením (rozvrh hodin, daňové pásmo, pravdivostní tabulky <code>AND</code>/<code>OR</code>).</td>
+              <td>Velmi přehledné, jednoznačné a snadno pochopitelné.</td>
+              <td>Nehodí se pro složitější postupy vyžadující delší vysvětlení.</td>
+            </tr>
+            <tr>
+              <th scope="row">Vývojové diagramy</th>
+              <td>Grafický symbolický jazyk složený ze značek spojených orientovanými hranami (šipkami).</td>
+              <td>Názorné, přehledné, skvělé pro týmovou spolupráci a dokumentaci.</td>
+              <td>Počítač jim přímo nerozumí, je nutné je přepsat do kódu.</td>
+            </tr>
+            <tr>
+              <th scope="row">Počítačový program</th>
+              <td>Zápis v programovacím jazyce, který překladač převede do strojového kódu.</td>
+              <td>Jediná forma, které rozumí člověk i počítač.</td>
+              <td>Rozumí jí jen znalec daného jazyka, je méně přehledná.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="algo-section section-shell section-block" id="diagramy">
+      <div class="section-heading">
+        <p class="eyebrow">04 / VÝVOJOVÉ DIAGRAMY</p>
+        <h2>Značky, ze kterých<br><span class="muted-text">se diagram skládá.</span></h2>
+      </div>
+      <p class="algo-note">Diagram se kreslí standardně odshora dolů a zleva doprava.</p>
+      <ul class="symbol-grid">
+        <li class="symbol-card">
+          <svg class="algo-svg" viewBox="0 0 160 64" role="img" aria-label="Značka mezní: ovál s textem Začátek">
+            <g fill="none" stroke="#6ce8ed" stroke-width="1.5">
+              <rect x="20" y="12" width="120" height="40" rx="20"/>
+            </g>
+            <text x="80" y="37" fill="#f2f4f8" font-size="12" font-family="monospace" text-anchor="middle">Začátek</text>
+          </svg>
+          <h3>Mezní značka</h3>
+          <p>Ovál označuje <strong>Začátek</strong> (vychází z něj jedna šipka dolů) nebo <strong>Konec</strong> (vstupuje do něj jedna šipka shora).</p>
+        </li>
+        <li class="symbol-card">
+          <svg class="algo-svg" viewBox="0 0 160 64" role="img" aria-label="Značka vstup a výstup: kosodélník s textem Čti A, B">
+            <g fill="none" stroke="#6ce8ed" stroke-width="1.5">
+              <polygon points="38,12 148,12 122,52 12,52"/>
+            </g>
+            <text x="80" y="37" fill="#f2f4f8" font-size="12" font-family="monospace" text-anchor="middle">Čti: A, B</text>
+          </svg>
+          <h3>Vstup / výstup</h3>
+          <p>Kosodélník slouží ke komunikaci s uživatelem nebo soubory. Data načítá <code>Čti: …</code>, výsledky vypisuje <code>Zobraz: …</code>.</p>
+        </li>
+        <li class="symbol-card">
+          <svg class="algo-svg" viewBox="0 0 160 64" role="img" aria-label="Značka zpracování: obdélník s textem A := A + B">
+            <g fill="none" stroke="#6ce8ed" stroke-width="1.5">
+              <rect x="20" y="12" width="120" height="40"/>
+            </g>
+            <text x="80" y="37" fill="#f2f4f8" font-size="12" font-family="monospace" text-anchor="middle">A := A + B</text>
+          </svg>
+          <h3>Zpracování</h3>
+          <p>Obdélník je sekvenční blok pro výpočty a transformaci dat. Má jeden vstup a jeden výstup, nedochází v něm k větvení.</p>
+        </li>
+        <li class="symbol-card">
+          <svg class="algo-svg" viewBox="0 0 160 64" role="img" aria-label="Značka rozhodování: kosočtverec s textem Podmínka a větvemi plus a mínus">
+            <g fill="none" stroke="#6ce8ed" stroke-width="1.5">
+              <polygon points="80,4 140,32 80,60 20,32"/>
+            </g>
+            <text x="80" y="36" fill="#f2f4f8" font-size="11" font-family="monospace" text-anchor="middle">Podmínka</text>
+            <text x="8" y="26" fill="#6ce8ed" font-size="12" font-family="monospace" text-anchor="middle">−</text>
+            <text x="152" y="26" fill="#6ce8ed" font-size="12" font-family="monospace" text-anchor="middle">+</text>
+          </svg>
+          <h3>Rozhodovací blok</h3>
+          <p>Kosočtverec větví algoritmus podle podmínky. Má jeden vstup a dva výstupy: <code>+</code> (ano, splněno) a <code>−</code> (ne, nesplněno).</p>
+        </li>
+        <li class="symbol-card">
+          <svg class="algo-svg" viewBox="0 0 160 64" role="img" aria-label="Značka příprava: šestiúhelník s textem Cyklus I := 1, N">
+            <g fill="none" stroke="#6ce8ed" stroke-width="1.5">
+              <polygon points="38,8 122,8 146,32 122,56 38,56 14,32"/>
+            </g>
+            <text x="80" y="36" fill="#f2f4f8" font-size="11" font-family="monospace" text-anchor="middle">Cyklus I := 1, N</text>
+          </svg>
+          <h3>Příprava</h3>
+          <p>Šestiúhelník zahajuje (případně i ukončuje) cyklus o známém počtu opakování.</p>
+        </li>
+        <li class="symbol-card">
+          <svg class="algo-svg" viewBox="0 0 160 64" role="img" aria-label="Značka spojka: kolečko s číslem 1">
+            <g fill="none" stroke="#6ce8ed" stroke-width="1.5">
+              <circle cx="80" cy="32" r="22"/>
+            </g>
+            <text x="80" y="37" fill="#f2f4f8" font-size="14" font-family="monospace" text-anchor="middle">1</text>
+          </svg>
+          <h3>Spojka</h3>
+          <p>Kolečko s číslem spojuje přerušené části diagramu, třeba při přechodu na další stránku. Obě související spojky mají stejné číslo.</p>
+        </li>
+        <li class="symbol-card">
+          <svg class="algo-svg" viewBox="0 0 160 64" role="img" aria-label="Značka podprogram: obdélník se svislými čarami po stranách a textem Načti matici A">
+            <g fill="none" stroke="#6ce8ed" stroke-width="1.5">
+              <rect x="14" y="12" width="132" height="40"/>
+              <line x1="26" y1="12" x2="26" y2="52"/>
+              <line x1="134" y1="12" x2="134" y2="52"/>
+            </g>
+            <text x="80" y="37" fill="#f2f4f8" font-size="11" font-family="monospace" text-anchor="middle">Načti matici A</text>
+          </svg>
+          <h3>Podprogram</h3>
+          <p>Obdélník se svislými čarami po stranách je samostatně zpracovaná, opakující se část programu. Zjednodušuje strukturu a ladění.</p>
+        </li>
+      </ul>
+
+      <div class="algo-example">
+        <div class="algo-example-text">
+          <h3>Příklad: dělení s ošetřením nuly</h3>
+          <p>Jmenovatel zlomku se nesmí rovnat nule. Rozhodovací blok proto nejdřív zkontroluje hodnotu <code>B</code>. Při <code>B = 0</code> (větev <code>+</code>) program vypíše hlášení, jinak (větev <code>−</code>) výsledek spočítá. Obě větve se sejdou v bloku <strong>Konec</strong>, takže algoritmus je konečný a jednoznačný.</p>
+        </div>
+        <svg class="algo-svg algo-flow" viewBox="0 0 400 430" role="img" aria-label="Vývojový diagram: Začátek, Čti A a B, podmínka B rovná se 0. Při splnění se zobrazí hlášení dělit nulou nelze, jinak se spočítá X jako A děleno B a zobrazí se X. Obě větve končí v bloku Konec.">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0 0 L10 5 L0 10 z" fill="#6ce8ed"/>
+            </marker>
+          </defs>
+          <g fill="none" stroke="#6ce8ed" stroke-width="1.5">
+            <rect x="90" y="10" width="120" height="36" rx="18"/>
+            <polygon points="104,66 214,66 196,102 86,102"/>
+            <polygon points="150,122 225,160 150,198 75,160"/>
+            <rect x="90" y="226" width="120" height="36"/>
+            <polygon points="104,282 214,282 196,318 86,318"/>
+            <rect x="90" y="370" width="120" height="36" rx="18"/>
+            <polygon points="264,134 394,134 376,186 246,186"/>
+          </g>
+          <g fill="none" stroke="#9aa3b5" stroke-width="1.5">
+            <path d="M150 46 V64" marker-end="url(#arrow)"/>
+            <path d="M150 102 V120" marker-end="url(#arrow)"/>
+            <path d="M150 198 V224" marker-end="url(#arrow)"/>
+            <path d="M150 262 V280" marker-end="url(#arrow)"/>
+            <path d="M150 318 V368" marker-end="url(#arrow)"/>
+            <path d="M225 160 H245" marker-end="url(#arrow)"/>
+            <path d="M320 186 V388 H212" marker-end="url(#arrow)"/>
+          </g>
+          <g fill="#f2f4f8" font-size="12" font-family="monospace" text-anchor="middle">
+            <text x="150" y="33">Začátek</text>
+            <text x="150" y="89">Čti: A, B</text>
+            <text x="150" y="164">B = 0</text>
+            <text x="150" y="248">X := A / B</text>
+            <text x="150" y="305">Zobraz: X</text>
+            <text x="150" y="393">Konec</text>
+            <text x="320" y="156" font-size="11">Zobraz:</text>
+            <text x="320" y="171" font-size="11">dělit nulou nelze</text>
+          </g>
+          <g fill="#6ce8ed" font-size="14" font-family="monospace" text-anchor="middle">
+            <text x="236" y="152">+</text>
+            <text x="164" y="216">−</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <section class="algo-section section-shell section-block" id="test">
+      <div class="section-heading">
+        <p class="eyebrow">05 / TEST</p>
+        <h2>Otestujte<br><span class="muted-text">své znalosti.</span></h2>
+      </div>
+      <p class="algo-note">U každé otázky zvolte jednu odpověď. Po kliknutí na <strong>Vyhodnotit</strong> uvidíte skóre i správná řešení.</p>
+
+      <form class="quiz" id="quiz" action="#" method="get" novalidate>
+        <fieldset class="quiz-question" data-answer="c">
+          <legend><span class="quiz-number">1.</span> Jak se v programu projeví algoritmus, ve kterém byla porušena podmínka věcné správnosti?</legend>
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> <span>Program se nikdy nespustí a překladač nahlásí syntaktickou chybu.</span></label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> <span>Program se zacyklí a bude nutné ho násilně ukončit.</span></label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> <span>Program zdánlivě pracuje bez problému, ale poskytuje chybné výsledky.</span></label>
+          <label class="quiz-option"><input type="radio" name="q1" value="d"> <span>Program skončí ihned po načtení prvního vstupního údaje.</span></label>
+          <p class="quiz-feedback" hidden></p>
+          <p class="quiz-explain" hidden>Chyba se na první pohled nepozná, protože výpočet proběhne, ale se špatným vzorcem.</p>
+        </fieldset>
+
+        <fieldset class="quiz-question" data-answer="b">
+          <legend><span class="quiz-number">2.</span> Který zápis správně převádí zlomek (A+B) / (C+D) do programátorského zápisu?</legend>
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> <span><code>X := A+B / C+D</code></span></label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> <span><code>X := (A+B) / (C+D)</code></span></label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> <span><code>X := A+B / (C+D)</code></span></label>
+          <label class="quiz-option"><input type="radio" name="q2" value="d"> <span><code>X := (A+B) / C+D</code></span></label>
+          <p class="quiz-feedback" hidden></p>
+          <p class="quiz-explain" hidden>Zlomková čára určuje prioritu, kterou musíme nahradit závorkami v čitateli i ve jmenovateli.</p>
+        </fieldset>
+
+        <fieldset class="quiz-question" data-answer="c">
+          <legend><span class="quiz-number">3.</span> Jak se ve vývojovém diagramu značí blok pro načtení vstupních dat od uživatele?</legend>
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> <span>Obdélníkem s textem <code>Načti:</code></span></label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> <span>Kosočtvercem s textem <code>Vstup:</code></span></label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> <span>Kosodélníkem s textem <code>Čti:</code></span></label>
+          <label class="quiz-option"><input type="radio" name="q3" value="d"> <span>Oválem s textem <code>Začátek:</code></span></label>
+          <p class="quiz-feedback" hidden></p>
+          <p class="quiz-explain" hidden>Kosodélník s příkazem <code>Čti:</code> slouží pro vstup dat.</p>
+        </fieldset>
+
+        <fieldset class="quiz-question" data-answer="d">
+          <legend><span class="quiz-number">4.</span> Která vlastnost algoritmu zajišťuje, že při zadání stejných vstupních dat dostaneme vždy stejný výsledek?</legend>
+          <label class="quiz-option"><input type="radio" name="q4" value="a"> <span>Obecnost</span></label>
+          <label class="quiz-option"><input type="radio" name="q4" value="b"> <span>Srozumitelnost</span></label>
+          <label class="quiz-option"><input type="radio" name="q4" value="c"> <span>Jednoznačnost</span></label>
+          <label class="quiz-option"><input type="radio" name="q4" value="d"> <span>Opakovatelnost</span></label>
+          <p class="quiz-feedback" hidden></p>
+          <p class="quiz-explain" hidden>Opakovatelnost zaručuje stejné chování a výsledky při stejných podmínkách a vstupech.</p>
+        </fieldset>
+
+        <fieldset class="quiz-question" data-answer="b">
+          <legend><span class="quiz-number">5.</span> Jaký je hlavní účel překladače?</legend>
+          <label class="quiz-option"><input type="radio" name="q5" value="a"> <span>Převádí vývojový diagram na slovní popis pro zákazníka.</span></label>
+          <label class="quiz-option"><input type="radio" name="q5" value="b"> <span>Překládá program napsaný v programovacím jazyce do strojového kódu.</span></label>
+          <label class="quiz-option"><input type="radio" name="q5" value="c"> <span>Automaticky opravuje logické chyby a podmínky řešitelnosti v algoritmu.</span></label>
+          <label class="quiz-option"><input type="radio" name="q5" value="d"> <span>Převádí cizojazyčné komentáře v kódu do češtiny.</span></label>
+          <p class="quiz-feedback" hidden></p>
+          <p class="quiz-explain" hidden>Počítač rozumí pouze strojovému kódu, do kterého program převede překladač.</p>
+        </fieldset>
+
+        <div class="quiz-actions">
+          <button type="submit" class="form-button form-button-primary">Vyhodnotit</button>
+          <button type="reset" class="form-button">Vymazat test</button>
+        </div>
+        <p class="quiz-result" id="quiz-result" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="quiz-open">
+        <h3>Otevřené otázky</h3>
+        <p class="algo-note">Zkuste odpovědět vlastními slovy a poté si odpověď rozbalte.</p>
+        <details>
+          <summary>6. Vyjmenujte všech 6 základních podmínek, které musí splňovat správný algoritmus.</summary>
+          <p>Začátek a konec (konečnost), věcná správnost, jednoznačnost, obecnost, opakovatelnost, srozumitelnost.</p>
+        </details>
+        <details>
+          <summary>7. Jaké dvě hlavní podmínky řešitelnosti musíme nejčastěji ošetřit pomocí větvení?</summary>
+          <p>Jmenovatel zlomku se nesmí rovnat nule (dělení nulou) a výraz pod odmocninou nesmí být záporný (v oboru reálných čísel).</p>
+        </details>
+        <details>
+          <summary>8. Jaký je rozdíl mezi logickým součinem (<code>AND</code>) a logickým součtem (<code>OR</code>) proměnných A a B?</summary>
+          <p>Logický součin (<code>A AND B</code>) má hodnotu 1 pouze tehdy, jsou-li obě proměnné A i B rovny 1. Logický součet (<code>A OR B</code>) má hodnotu 1 tehdy, když je alespoň jedna z proměnných (nebo obě) rovna 1.</p>
+        </details>
+        <details>
+          <summary>9. K čemu slouží ve vývojovém diagramu značka „Spojka“ a jakým pravidlem se řídí její označování?</summary>
+          <p>Slouží ke spojení dvou částí vývojového diagramu, které nelze nakreslit souvisle (například na konci stránky nebo kvůli křížení čar). Spojka na konci přerušení a na začátku pokračování musí být označena stejným číslem.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <a class="logo" href="index.html" aria-label="Hlib Kolisnyk — portfolio">HK<span>.</span></a>
+    <div class="validator-tools">
+      <a class="validator-link" id="html-validator" href="https://validator.w3.org/nu/" target="_blank" rel="noopener noreferrer">Ověřit HTML <span>↗</span></a>
+      <button class="validator-link" id="css-validator" type="button" disabled>Ověřit CSS <span>↗</span></button>
+      <p class="validator-note" id="validator-note">Výsledek kontroly CSS se otevře v nové záložce.</p>
+    </div>
+    <form id="html-validator-form" action="https://validator.w3.org/nu/" method="post" enctype="multipart/form-data" target="_blank">
+      <textarea name="content" aria-label="HTML pro validaci" hidden></textarea>
+    </form>
+    <form id="css-validator-form" action="https://jigsaw.w3.org/css-validator/validator" method="post" enctype="multipart/form-data" target="_blank">
+      <input type="hidden" name="profile" value="css3">
+      <input type="hidden" name="warning" value="1">
+      <input type="hidden" name="lang" value="cs">
+      <textarea name="text" aria-label="CSS pro validaci" hidden></textarea>
+    </form>
+    <div class="footer-links">
+      <a class="validator-link" href="https://github.com/Lutar-Hlib/Lutar-Hlib.github.io/blob/main/citace.md" target="_blank" rel="noopener noreferrer">Citace a zdroje <span>↗</span></a>
+      <a class="validator-link" href="https://github.com/Lutar-Hlib/Lutar-Hlib.github.io/blob/main/prompt-copilot.md" target="_blank" rel="noopener noreferrer">Prompt pro Copilota <span>↗</span></a>
+    </div>
+    <a class="back-top" href="#uvod">Zpět nahoru ↑</a>
+  </footer>
+  <script src="validators.js"></script>
+  <script src="algoritmy.js"></script>
+</body>
+</html>
